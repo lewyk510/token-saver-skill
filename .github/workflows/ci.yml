@@ -1,0 +1,28 @@
+# GitHub Actions CI — copy this file to .github/workflows/ci.yml and edit the
+# "Run tests" step to match your project. Free for public repositories.
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Run tests
+        run: |
+          set -e
+          ran=0
+          if [ -f scripts/selftest.py ]; then python3 scripts/selftest.py; ran=1; fi
+          if [ -f scripts/selftest.sh ]; then bash scripts/selftest.sh; ran=1; fi
+          if [ -d scripts/tests ]; then python3 -m unittest discover -s scripts/tests; ran=1; fi
+          if [ -f Makefile ] && grep -q '^test:' Makefile; then make test; ran=1; fi
+          if [ -f package.json ]; then npm test; ran=1; fi
+          if [ "$ran" -eq 0 ]; then echo "No test entrypoint found"; fi

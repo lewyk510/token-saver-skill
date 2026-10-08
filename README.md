@@ -75,6 +75,16 @@ rm -rf ~/.agents/skills/token-saver-skill
 - **caveman CLI**：真实 token 计量（`caveman learn report` 找最大消耗点再定向裁）
 - 两者未装时跳过即可，本技能零依赖自洽
 
+## 参与 / 促进进化
+
+公开仓就是为「被人用了 → 改了 → 回流升级」而设：
+
+- **用**：`cp -r` 本仓到你的技能目录即可（见上「安装」）。
+- **改**：fork → 新建分支 → 按 Conventional Commits 提交 → 开 PR。
+- **回流**：PR 通过 CI（`python3 scripts/selftest.py`）后合并，改进进入主线，所有人 `git pull` 得到升级。
+- 规则见 `CONTRIBUTING.md`；请在 PR 描述里写清 **what / why / 怎么测**。
+
 ## 许可
 
-MIT。技能描述与纪律条目可自由修改后自用。
+MIT（见 `LICENSE`）。技能描述与纪律条目可自由修改，改动回流欢迎开 PR。
+
