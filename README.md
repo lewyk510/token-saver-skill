@@ -38,8 +38,8 @@ cp -r . ~/.agents/skills/token-saver-skill
 ```bash
 # 1. 状态沉淀文件（八章结构模板见 templates/HANDOFF.template.md）
 cp ~/.agents/skills/token-saver-skill/templates/HANDOFF.template.md ./notes/HANDOFF.md
-# 2. 结论层记忆
-echo "## 已确定结论" > ./MEMORY.md
+# 2. 结论层记忆（模板含已确定结论/口径与陷阱/未决/已作废四区）
+cp ~/.agents/skills/token-saver-skill/templates/MEMORY.template.md ./MEMORY.md
 ```
 
 ## 备份到 GitHub（首次，在有凭据的机器上）
@@ -50,7 +50,7 @@ gh repo create token-saver-skill --public --source=. --push
 # 无 gh CLI 时等价做法：
 #   1. GitHub 网页上新建空仓库 token-saver-skill
 #   2. git remote add origin git@github.com:<你>/token-saver-skill.git
-#   3. git push -u origin master
+#   3. git push -u origin main
 ```
 
 ## 换机 / 备用恢复
